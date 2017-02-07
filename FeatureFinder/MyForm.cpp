@@ -13,7 +13,7 @@ void Main(cli::array<String^>^ args) {
 		Application::Run(%form);
 	} catch (SystemException^) {
 		MessageBox::Show(
-			"Daya! Kuchh to gadbad hai ...",
+			"Unexpected error occurred!",
 			"ERROR",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Error

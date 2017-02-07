@@ -386,14 +386,24 @@ namespace FeatureFinder {
 				this->textBox1->Text = rootFolder;
 				DirectoryInfo^ di = gcnew DirectoryInfo(rootFolder);
 				cli::array<FileInfo^>^ files = di->GetFiles("*.csv");
-				for each (FileInfo ^ file in files) {
-					this->comboBox1->Items->Add(file->Name);
-					this->comboBox2->Items->Add(file->Name);
+
+				if (files->Length == 0) {
+					MessageBox::Show(
+						"Specified folder does not have any CSV files or is empty!",
+						"WARNING",
+						MessageBoxButtons::OK,
+						MessageBoxIcon::Exclamation
+					);
+				} else {
+					for each (FileInfo ^ file in files) {
+						this->comboBox1->Items->Add(file->Name);
+						this->comboBox2->Items->Add(file->Name);
+					}
+					comboBox1->Items->Insert(0, "Please select a file");
+					comboBox2->Items->Insert(0, "Please select a file");
+					comboBox1->SelectedIndex = 0;
+					comboBox2->SelectedIndex = 0;
 				}
-				comboBox1->Items->Insert(0, "Please select a file");
-				comboBox2->Items->Insert(0, "Please select a file");
-				comboBox1->SelectedIndex = 0;
-				comboBox2->SelectedIndex = 0;
 			}
 		}
 
@@ -487,7 +497,6 @@ namespace FeatureFinder {
 					MessageBoxIcon::Error
 				);
 			} else {
-
 				this->label10->Text = "Processing for " + this->listBox2->Text + " vs. " + this->listBox1->Text;
 
 				reference->process();
