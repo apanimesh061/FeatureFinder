@@ -53,4 +53,4 @@ After you click `Process`:
 
 #### Demo
 
-[![Demo CountPages alpha](https://media.giphy.com/media/l0Ex9u0sI4aYzkEjS/source.gif)](https://media.giphy.com/media/l0Ex9u0sI4aYzkEjS/source.gif)
+![demo_gif](images/demo.gif)
